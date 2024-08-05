@@ -1,0 +1,405 @@
+{
+  "name": "WSO2-MB",
+  "type": "inbuilt-inbound-endpoint",
+  "title": "WSO2-MB Inbound Endpoint",
+  "id": "wso2mb",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Generic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "name",
+              "displayName": "Inbound Endpoint Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequence",
+              "displayName": "Injecting Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "onError",
+              "displayName": "Error Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "suspend",
+              "displayName": "Suspend Inbound",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "hidden": "true",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "protocol",
+              "displayName": "Protocol",
+              "inputType": "string",
+              "defaultValue": "jms",
+              "hidden": "true",
+              "required": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "interval",
+              "displayName": "Polling Interval",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "java.naming.factory.initial",
+              "displayName": "Java Naming Factory Initial",
+              "inputType": "string",
+              "defaultValue": "org.wso2.andes.jndi.PropertiesFileInitialContextFactory",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "connectionfactory.TopicConnectionFactory",
+              "displayName": "WSO2 MB Connection URL",
+              "inputType": "string",
+              "defaultValue": "amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5673'",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequential",
+              "displayName": "Sequential",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "coordination",
+              "displayName": "Coordination",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Connection",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ConnectionFactoryJNDIName",
+              "displayName": "Connection Factory JNDI Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ConnectionFactoryType",
+              "displayName": "Connection Factory Type",
+              "inputType": "combo",
+              "comboValues": [
+                "queue",
+                "topic"
+              ],
+              "defaultValue": "queue",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.Destination",
+              "displayName": "Destination Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ReplyDestination",
+              "displayName": "Reply Destination",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Session",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.SessionTransacted",
+              "displayName": "Session Transacted",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.SessionAcknowledgement",
+              "displayName": "Session Acknowledgement",
+              "inputType": "combo",
+              "comboValues": [
+                "AUTO_ACKNOWLEDGE",
+                "CLIENT_ACKNOWLEDGE",
+                "DUPS_OK_ACKNOWLEDGE",
+                "SESSION_TRANSACTED"
+              ],
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Message",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.CacheLevel",
+              "displayName": "Cache Level",
+              "inputType": "combo",
+              "comboValues": [
+                "0",
+                "1",
+                "2",
+                "3"
+              ],
+              "defaultValue": "0",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ContentType",
+              "displayName": "Content Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.JMSSpecVersion",
+              "displayName": "JMS Spec Version",
+              "inputType": "string",
+              "defaultValue": "1.1",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ContentTypeProperty",
+              "displayName": "Content Type Property",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Subscription",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.SharedSubscription",
+              "displayName": "Shared Subscription",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.SubscriptionName",
+              "displayName": "Subscription Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.SubscriptionDurable",
+              "displayName": "Subscription Durable",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.DurableSubscriberClientID",
+              "displayName": "Durable Subscriber Client ID",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.DurableSubscriberName",
+              "displayName": "Durable Subscriber Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Resilience",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ConcurrentConsumers",
+              "displayName": "Concurrent Consumers",
+              "inputType": "string",
+              "defaultValue": "1",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.retry.duration",
+              "displayName": "Retry Duration",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.ReceiveTimeout",
+              "displayName": "Receive Timeout",
+              "inputType": "string",
+              "defaultValue": "1",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Other",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.MessageSelector",
+              "displayName": "MessageSelector",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "transport.jms.PubSubNoLocal",
+              "displayName": "Publish messages via non-local connection",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "pinnedServers",
+              "displayName": "Pinned Servers",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

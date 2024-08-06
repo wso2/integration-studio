@@ -1,0 +1,549 @@
+{
+  "name": "RabbitMQ",
+  "type": "inbuilt-inbound-endpoint",
+  "title": "RabbitMQ Inbound Endpoint",
+  "id": "rabbitmq",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Generic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "name",
+              "displayName": "Inbound Endpoint Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequence",
+              "displayName": "Injecting Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "onError",
+              "displayName": "Error Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "suspend",
+              "displayName": "Suspend Inbound",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "hidden": "true",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "protocol",
+              "displayName": "Protocol",
+              "inputType": "string",
+              "defaultValue": "rabbitmq",
+              "hidden": "true",
+              "required": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.factory",
+              "displayName": "Connection Factory",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.host.name",
+              "displayName": "Server Host",
+              "inputType": "string",
+              "defaultValue": "localhost",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.port",
+              "displayName": "Server Port",
+              "inputType": "string",
+              "defaultValue": "5672",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.user.name",
+              "displayName": "Server Username",
+              "inputType": "string",
+              "defaultValue": "guest",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.password",
+              "displayName": "Server Password",
+              "inputType": "string",
+              "defaultValue": "guest",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.name",
+              "displayName": "Queue Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequential",
+              "displayName": "Sequential",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "coordination",
+              "displayName": "Coordination",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Connection",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.exchange.name",
+              "displayName": "Exchange Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.virtual.host",
+              "displayName": "Virtual Host",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.factory.heartbeat",
+              "displayName": "Factory Heartbeat",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.factory.connection.timeout",
+              "displayName": "Connection Timeout",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Resilience",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.retry.count",
+              "displayName": "Retry Count",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.retry.interval",
+              "displayName": "Connection Retry Interval",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.server.retry.interval",
+              "displayName": "Server Retry Interval",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.factory.network.recovery.interval",
+              "displayName": "Connection Factory Network Recovery Interval",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Queue",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.durable",
+              "displayName": "Durable",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.exclusive",
+              "displayName": "Exclusive",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.auto.delete",
+              "displayName": "Auto Delete",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.auto.ack",
+              "displayName": "Auto Acknowledge",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.routing.key",
+              "displayName": "Routing Key",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.delivery.mode",
+              "displayName": "Delivery Mode",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.queue.autodeclare",
+              "displayName": "Auto Declare",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Exchange",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.exchange.type",
+              "displayName": "Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.exchange.durable",
+              "displayName": "Durable",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.exchange.auto.delete",
+              "displayName": "Auto Delete",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.exchange.autodeclare",
+              "displayName": "Auto Declare",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "SSL",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.enabled",
+              "displayName": "Enabled",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.keystore.location",
+              "displayName": "Keystore Location",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.keystore.type",
+              "displayName": "Keystore Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.keystore.password",
+              "displayName": "Keystore Password",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.truststore.location",
+              "displayName": "Truststore Location",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.truststore.type",
+              "displayName": "Truststore Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.truststore.password",
+              "displayName": "Truststore Password",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.connection.ssl.version",
+              "displayName": "SSL Version",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Other",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.message.content.type",
+              "displayName": "Content-Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.message.max.dead.lettered.count",
+              "displayName": "Dead Lettered Count",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.message.requeue.delay",
+              "displayName": "Requeue Delay",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.consumer.tag",
+              "displayName": "Consumer Tag",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.channel.consumer.qos",
+              "displayName": "Consumer QOS",
+              "inputType": "string",
+              "defaultValue": "0",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.message.error.queue.routing.key",
+              "displayName": "Error Queue Routing Key",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "rabbitmq.message.error.exchange.name",
+              "displayName": "Error Exchange Name",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

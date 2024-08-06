@@ -1,0 +1,238 @@
+{
+  "name": "Websocket",
+  "type": "inbuilt-inbound-endpoint",
+  "title": "Websocket Inbound Endpoint",
+  "id": "ws",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Generic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "name",
+              "displayName": "Inbound Endpoint Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequence",
+              "displayName": "Injecting Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "onError",
+              "displayName": "Error Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "suspend",
+              "displayName": "Suspend Inbound",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "hidden": "true",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "protocol",
+              "displayName": "Protocol",
+              "inputType": "string",
+              "defaultValue": "ws",
+              "hidden": "true",
+              "required": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.ws.port",
+              "displayName": "Port",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.outflow.dispatch.sequence",
+              "displayName": "Outflow Sequence",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.outflow.dispatch.fault.sequence",
+              "displayName": "Outflow Fault Sequence",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequential",
+              "displayName": "Sequential",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "coordination",
+              "displayName": "Coordination",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Advanced",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.client.side.broadcast.level",
+              "displayName": "Client Side Broadcast Level",
+              "inputType": "combo",
+              "comboValues": [
+                "0",
+                "1",
+                "2"
+              ],
+              "defaultValue": "0",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.boss.thread.pool.size",
+              "displayName": "Boss Thread Pool Size",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.worker.thread.pool.size",
+              "displayName": "Worker Thread Pool Size",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Other",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.default.content.type",
+              "displayName": "Default Content-Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.shutdown.status.code",
+              "displayName": "Shutdown Status Code",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.shutdown.status.message",
+              "displayName": "Shutdown Status Message",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.use.port.offset",
+              "displayName": "Use Port Offset",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.subprotocol.handler.class",
+              "displayName": "Sub-protocol Handler Class",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "ws.pipeline.handler.class",
+              "displayName": "Pipeline Handler Class",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "name": "MQTT",
+  "type": "inbuilt-inbound-endpoint",
+  "title": "MQTT Inbound Endpoint",
+  "id": "mqtt",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Generic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "name",
+              "displayName": "Inbound Endpoint Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequence",
+              "displayName": "Injecting Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "onError",
+              "displayName": "Error Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "suspend",
+              "displayName": "Suspend Inbound",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "hidden": "true",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "protocol",
+              "displayName": "Protocol",
+              "inputType": "string",
+              "defaultValue": "mqtt",
+              "hidden": "true",
+              "required": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.connection.factory",
+              "displayName": "Connection Factory",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.server.host.name",
+              "displayName": "Server Host",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.server.port",
+              "displayName": "Server Port",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.topic.name",
+              "displayName": "Topic",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "content.type",
+              "displayName": "Content-type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequential",
+              "displayName": "Sequential",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "coordination",
+              "displayName": "Coordination",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Connection",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.reconnection.interval",
+              "displayName": "Reconnection Interval",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Subscription",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.subscription.username",
+              "displayName": "Username",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.subscription.password",
+              "displayName": "Password",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.client.id",
+              "displayName": "Client ID",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.subscription.qos",
+              "displayName": "QOS Level",
+              "inputType": "combo",
+              "comboValues": [
+                "0",
+                "1",
+                "2"
+              ],
+              "defaultValue": "0",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.session.clean",
+              "displayName": "Session Clean",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "SSL",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.enable",
+              "displayName": "Enable SSL",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.keystore.location",
+              "displayName": "Keystore Location",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.keystore.type",
+              "displayName": "Keystore Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.keystore.password",
+              "displayName": "Keystore Password",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.truststore.location",
+              "displayName": "Truststore Location",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.truststore.type",
+              "displayName": "Truststore Type",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.truststore.password",
+              "displayName": "Truststore Password",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.ssl.version",
+              "displayName": "SSL Version",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Other",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "mqtt.temporary.store.directory",
+              "displayName": "Temporary Store Directory",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

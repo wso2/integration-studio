@@ -1,0 +1,184 @@
+{
+  "name": "HTTP",
+  "type": "inbuilt-inbound-endpoint",
+  "title": "HTTP Inbound Endpoint",
+  "id": "http",
+  "elements": [
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Generic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "name",
+              "displayName": "Inbound Endpoint Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequence",
+              "displayName": "Injecting Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "onError",
+              "displayName": "Error Sequence Name",
+              "inputType": "string",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "suspend",
+              "displayName": "Suspend Inbound",
+              "inputType": "checkbox",
+              "defaultValue": false,
+              "hidden": "true",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "protocol",
+              "displayName": "Protocol",
+              "inputType": "string",
+              "defaultValue": "http",
+              "hidden": "true",
+              "required": "true"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Basic",
+        "isCollapsed": false,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.http.port",
+              "displayName": "Port",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "true"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "sequential",
+              "displayName": "Sequential",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "coordination",
+              "displayName": "Coordination",
+              "inputType": "checkbox",
+              "defaultValue": true,
+              "required": "false"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "attributeGroup",
+      "value": {
+        "groupName": "Advanced",
+        "isCollapsed": true,
+        "elements": [
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.worker.pool.size.core",
+              "displayName": "Worker Pool Size - Core",
+              "inputType": "string",
+              "defaultValue": "400",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.worker.pool.size.max",
+              "displayName": "Worker Pool Size - Max",
+              "inputType": "string",
+              "defaultValue": "500",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.worker.thread.keep.alive.sec",
+              "displayName": "Thread Keep Alive Time (sec)",
+              "inputType": "string",
+              "defaultValue": "60",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.worker.pool.queue.length",
+              "displayName": "Worker Pool Queue Length",
+              "inputType": "string",
+              "defaultValue": "-1",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.thread.group.id",
+              "displayName": "Thread Group ID",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "inbound.thread.id",
+              "displayName": "Thread ID",
+              "inputType": "string",
+              "defaultValue": "PassThroughInboundWorkerPool",
+              "required": "false"
+            }
+          },
+          {
+            "type": "attribute",
+            "value": {
+              "name": "dispatch.filter.pattern",
+              "displayName": "Filter Pattern",
+              "inputType": "string",
+              "defaultValue": "",
+              "required": "false"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

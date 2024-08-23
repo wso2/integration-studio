@@ -7388,7 +7388,7 @@
         },
         {
             "name": "file",
-            "version": "4.0.20",
+            "version": "4.0.29",
             "rank": 1,
             "operations": [
                 {
@@ -7467,7 +7467,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/4.0.0/file-connector-4.0.20.zip",
+            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/4.0.0/file-connector-4.0.29.zip",
             "description": "WSO2 file connector library",
             "icon": "file.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/file.gif"

@@ -939,7 +939,7 @@ public class EsbMultiPageEditor extends MultiPageEditorPart implements IGotoMark
 
         if (sourceEditor != null) {
             String xmlSource = sourceEditor.getDocument().get();
-            if (xmlSource != null && sourceDirty) {
+            if (xmlSource != null) {
                 if (!xmlSource.trim().isEmpty()) {
                     rebuildModelObject(xmlSource, withSynapse);
                 }

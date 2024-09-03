@@ -89,14 +89,6 @@ public class DistributionProjectWizard extends
 			mavenProject.getModel().setPackaging("carbon/application");
 			Plugin plugin = MavenUtils.createPluginEntry(mavenProject,
 					"org.wso2.maven", "maven-car-plugin", MavenConstants.MAVEN_CAR_VERSION, true);
-			PluginExecution pluginExecution;
-			
-
-			pluginExecution = new PluginExecution();
-			pluginExecution.addGoal("car");
-			pluginExecution.setPhase("package");
-			pluginExecution.setId("car");
-			plugin.addExecution(pluginExecution);
 			
 			Plugin carDeployPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven", "maven-car-deploy-plugin", MavenConstants.MAVEN_CAR_DEPLOY_VERSION, true);
 			Xpp3Dom carDeployConfElement = MavenUtils.createMainConfigurationNode(carDeployPlugin);

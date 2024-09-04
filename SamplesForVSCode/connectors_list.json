@@ -7211,180 +7211,230 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/feed.gif"
         },
         {
-            "name": "fhir",
-            "version": "1.0.2",
+            "name": "fhirbase",
+            "version": "1.1.0",
             "rank": 28,
             "operations": [
                 {
-                    "name": "readResource",
-                    "description": "Retrieve the Resource details.",
+                    "name": "addBundleEntry",
+                    "description": "Add an entry to the Bundle.",
                     "isHidden": false
                 },
                 {
-                    "name": "readSpecificResourceById",
-                    "description": "Retrieve the instance of a specific resource by an Id.",
+                    "name": "addBundleLink",
+                    "description": "Add a link to the Bundle.",
                     "isHidden": false
                 },
                 {
-                    "name": "vReadResource",
-                    "description": "Retrieve an instance of a, specific resource and the specific version.",
+                    "name": "addElement",
+                    "description": "Add an element datatype to a resource.",
                     "isHidden": false
                 },
                 {
-                    "name": "update",
-                    "description": "The update interaction creates a new current version for an existing resource or creates an initial version if no resource already exists for the given id.",
+                    "name": "createAddress",
+                    "description": "Create an Address datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "conditionalUpdate",
-                    "description": "Allows a client to update an existing resource based on some identification criteria, rather than by logical id.",
+                    "name": "createAge",
+                    "description": "Create an Age datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "create",
-                    "description": "The create interaction creates a new resource in a server-assigned location.",
+                    "name": "createAnnotation",
+                    "description": "Create an Annotation datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "delete",
-                    "description": "The delete interaction removes an existing resource.",
+                    "name": "createAttachment",
+                    "description": "Create an Attachment datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "conditionalDelete",
-                    "description": "Allows a client to delete an existing resource based on some selection criteria, rather than by a specific logical id.",
+                    "name": "createBundle",
+                    "description": "Create a Bundle resource.",
                     "isHidden": false
                 },
                 {
-                    "name": "search",
-                    "description": "Search from a specified compartment, perhaps with a specified resource type in that compartment.",
+                    "name": "createCodeableConcept",
+                    "description": "Create a CodeableConcept datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "searchSpecificResource",
-                    "description": "To search a compartment, for all possible resources.",
+                    "name": "createCoding",
+                    "description": "Create a Coding datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "getConformance",
-                    "description": "Retrieve the Resource details.",
+                    "name": "createContactDetail",
+                    "description": "Create a ContactDetail datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "history",
-                    "description": "Retrieves the history of a particular resource supported by the system.",
+                    "name": "createContactPoint",
+                    "description": "Create a ContactPoint datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "historyAll",
-                    "description": "Retrieves the history of all resources supported by the system.",
+                    "name": "createCount",
+                    "description": "Create a Count datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "historyType",
-                    "description": "Retrieves the history of all resources of a given type supported by the system.",
+                    "name": "createContributor",
+                    "description": "Create a Contributor datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "addMetaToResource",
-                    "description": "This operation takes a meta, and adds the profiles, tags, and security labels found in it to the nominated resource.",
+                    "name": "createDataRequirement",
+                    "description": "Create a DataRequirement datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "closureTableMaintenance",
-                    "description": "This operation provides support for ongoing maintenance of a client-side closure table based on server-side terminological logic.",
+                    "name": "createDosage",
+                    "description": "Create a Dosage datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "deleteMetaForResource",
-                    "description": "This operation takes a meta, and deletes the profiles, tags, and security labels found in it from the nominated resource.",
+                    "name": "createDuration",
+                    "description": "Create a Duration datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "fetchEncounterRecord",
-                    "description": "This operation is used to return all the information related to an encounter described in the resource on which this operation is invoked.",
+                    "name": "createExpression",
+                    "description": "Create an Expression datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "fetchPatientRecord",
-                    "description": "This operation is used to return all the information related to the patient described in the resource on which this operation is invoked.",
+                    "name": "createHumanName",
+                    "description": "Create a HumanName datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "fetchPatientRecordById",
-                    "description": "This operation is used to return all the information related to the patient by Id described in the resource on which this operation is invoked.",
+                    "name": "createIdentifier",
+                    "description": "Create an Identifier datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "findFunctionalList",
-                    "description": "This operation allows a client to find an identified list for a particular function by its function.",
+                    "name": "createMeta",
+                    "description": "Create a Meta datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "generateDocument",
-                    "description": "A client can ask a server to generate a fully bundled document from a composition resource.",
+                    "name": "createNarrative",
+                    "description": "Create a Narrative datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "listMetaByResourceType",
-                    "description": "A list of all profiles, tags, and security labels for the resource type.",
+                    "name": "createParameterDefinition",
+                    "description": "Create a ParameterDefinition datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "listMetaBySystem",
-                    "description": "A list of all profiles, tags and security labels in use by the system.",
+                    "name": "createPeriod",
+                    "description": "Create a Period datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "listMetaByVersionOfResource",
-                    "description": "A list of all profiles, tags, and security labels for the current version of the resource.",
+                    "name": "createQuantity",
+                    "description": "Create a Quantity datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "processMessage",
-                    "description": "This operation accepts a message, processes it according to the definition of the event in the message header, and returns a one or more response messages.",
+                    "name": "createRange",
+                    "description": "Create a Range datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "translateCode",
-                    "description": "Translate a code from one value set to another, based on the existing value set and concept maps resources, and/or other additional knowledge available to the server.",
+                    "name": "createRatio",
+                    "description": "Create a Ratio datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "translateCodeById",
-                    "description": "Translate a code from one value set to another, based on the existing value set and concept maps resources, and/or other additional knowledge available to the server.",
+                    "name": "createReference",
+                    "description": "Create a Reference datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "validateResource",
-                    "description": "The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.",
+                    "name": "createRelatedArtifact",
+                    "description": "Create a RelatedArtifact datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "validateResourceById",
-                    "description": "The validate operation checks whether the attached content would be acceptable either generally, as a create, an update or as a delete to an existing resource.",
+                    "name": "createSampledData",
+                    "description": "Create a SampledData datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "search",
-                    "description": "Search from a specific Resource type.",
+                    "name": "createSignature",
+                    "description": "Create a Signature datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "searchPost",
-                    "description": "Search from a specific Resource type in POST method.",
+                    "name": "createSimpleQuantity",
+                    "description": "Create a SimpleQuantity datatype.",
                     "isHidden": false
                 },
                 {
-                    "name": "init",
-                    "description": "Initial configuration file for FHIR rest connector.",
+                    "name": "createTiming",
+                    "description": "Create a Timing datatype.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createTriggerDefinition",
+                    "description": "Create a TriggerDefinition datatype.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createUsageContext",
+                    "description": "Create a UsageContext datatype.",
+                    "isHidden": false
+                },
+                {
+                    "name": "evaluateFHIRPath",
+                    "description": "Evaluate a FHIRPath expression.",
+                    "isHidden": false
+                },
+                {
+                    "name": "serialize",
+                    "description": "Serialize a resource to a specific format.",
+                    "isHidden": false
+                },
+                {
+                    "name": "validate",
+                    "description": "Validate a resource.",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBundleIdentifier",
+                    "description": "Set the identifier for the Bundle.",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBundleType",
+                    "description": "Set the type for the Bundle.",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBundleTimestamp",
+                    "description": "Set the timestamp for the Bundle.",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBundleTotal",
+                    "description": "Set the total for the Bundle.",
+                    "isHidden": false
+                },
+                {
+                    "name": "setBundleSignature",
+                    "description": "Set the signature for the Bundle.",
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/fhir-connector-1.0.2.zip",
-            "description": "WSO2 connector for FHIR RESTful API",
-            "icon": "fhir.png",
-            "icon_url": "https://mi-connectors.wso2.com/icons/fhir.png"
+            "download_url": "https://github.com/wso2-extensions/mediation-fhirbase-module/releases/download/v1.1.0/fhirbase-connector-1.1.0.zip",
+            "description": "Facilitates basic CRUD operations and searches on FHIR resources, bundling, error handling and ensuring standardized interactions with FHIR-compliant servers.",
+            "icon": "icon-large.png",
+            "icon_url": "https://raw.githubusercontent.com/wso2-extensions/mediation-fhirbase-module/main/src/main/resources/icon/icon-large.png"
         },
         {
             "name": "file",

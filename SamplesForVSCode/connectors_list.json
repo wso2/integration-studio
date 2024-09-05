@@ -7703,6 +7703,22 @@
             "icon_url": "https://raw.githubusercontent.com/wso2-extensions/esb-connector-fhirrepository/main/src/main/resources/icon/icon-large.png"
         },
         {
+            "name": "v2tofhir",
+            "version": "1.0.0",
+            "rank": 194,
+            "operations": [
+                {
+                    "name": "createResources",
+                    "description": "Init configuration for FHIR repository connector.",
+                    "isHidden": false
+                }
+            ],
+            "download_url": "https://github.com/wso2-extensions/mediation-hl7v2tofhir-module/releases/download/v1.0.0/v2tofhir-connector-1.0.0.zip",
+            "description": "Converts HL7 V2 messages to FHIR resources.",
+            "icon": "icon-large.png",
+            "icon_url": "https://raw.githubusercontent.com/wso2-extensions/mediation-hl7v2tofhir-module/main/src/main/resources/icon/icon-large.png"
+        },
+        {
             "name": "file",
             "version": "4.0.29",
             "rank": 1,

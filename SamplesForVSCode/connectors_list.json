@@ -6233,100 +6233,300 @@
             "rank": 78,
             "operations": [
                 {
-                    "name": "init",
-                    "description": "Init configuration file for Epic FHIR connector.",
+                    "name": "create",
+                    "description": "Create a new resource in the Epic FHIR server.",
                     "isHidden": false
                 },
                 {
-                    "name": "getConformance",
-                    "description": "The Conformance resource documents the functionality implemented using the HL7 FHIR standard.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchPatient",
-                    "description": "The Patient resource provides general demographic information about a person receiving health care services from a specific organization.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchAllergyIntolerance",
-                    "description": "The AllergyIntolerance resource defines the substance that elicited the response, as well as when the reaction occurred, the severity, and the type of reaction noted.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchMedicationOrder",
-                    "description": "The FHIR MedicationOrder resource defines detailed information about a medication that was ordered for a patient, including prescriptions or OTC drugs ordered in an ambulatory clinic.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchMedicationStatement",
-                    "description": "The FHIR MedicationStatement resource defines detailed information about medications being consumed by a patient, including medication prescriptions, OTC drugs ordered in an ambulatory clinic, and medications reported by a patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchCondition",
-                    "description": "The FHIR Condition resource defines detailed information about a Condition, problem, or diagnosis relevant to the health of the patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchFamilyMemberHistory",
-                    "description": "The FHIR FamilyMemberHistory resource defines a patient's family history. This resource returns the current status, age, and medical and surgical history of relatives related to a specific patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchObservation",
-                    "description": "The FHIR Observation resource defines information about a measurement or simple assertion made about a patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchDiagnosticReport",
-                    "description": "The FHIR DiagnosticReport resource contains information about a single diagnostic service performed for a patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchImmunization",
-                    "description": "The FHIR Immunization Resource provides information about a patient's immunizations.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchProcedure",
-                    "description": "The FHIR Procedure resource defines an activity performed on or with a patient as part of the provision of care.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchDocumentReference",
-                    "description": "The FHIR DocumentReference resource describes information about a document.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchCarePlan",
-                    "description": "The FHIR CarePlan resource is a broad container for summarizing the plan of treatment for a patient.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchGoal",
-                    "description": "The FHIR Goal resource defines objectives for a patient based on a current condition or recent procedure.",
-                    "isHidden": false
-                },
-                {
-                    "name": "searchDevice",
-                    "description": "The FHIR Device resource describes information about a specific patient's durable, manufactured medical items.",
+                    "name": "getCapabilityStatement",
+                    "description": "Retrieve the CapabilityStatement resource from the Epic system.",
                     "isHidden": false
                 },
                 {
                     "name": "readById",
-                    "description": "Retrieve a specific resource by the ID.",
+                    "description": "Retrieve a resource by its ID from the Epic system.",
                     "isHidden": false
                 },
                 {
-                    "name": "create",
-                    "description": "Create a specific resource.",
+                    "name": "searchAccount",
+                    "description": "Search for account resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchAdverseEvent",
+                    "description": "Search for adverse event resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchAllergyIntolerance",
+                    "description": "Search for allergy intolerance resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchAppointment",
+                    "description": "Search for appointment resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchBinary",
+                    "description": "Search for binary resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchBodyStructure",
+                    "description": "Search for body structure resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchCarePlan",
+                    "description": "Search for care plan resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchCareTeam",
+                    "description": "Search for care team resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchCommunication",
+                    "description": "Search for communication resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchCondition",
+                    "description": "Search for condition resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchConsent",
+                    "description": "Search for consent resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchContract",
+                    "description": "Search for contract resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchCoverage",
+                    "description": "Search for coverage resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchDevice",
+                    "description": "Search for device resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchDeviceRequest",
+                    "description": "Search for device request resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchDeviceUseStatement",
+                    "description": "Search for device use statement resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchDiagnosticReport",
+                    "description": "Search for diagnostic report resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchDocumentReference",
+                    "description": "Search for document reference resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchEncounter",
+                    "description": "Search for encounter resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchEpisodeOfCare",
+                    "description": "Search for episode of care resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchExplanationOfBenefit",
+                    "description": "Search for explanation of benefit resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchFamilyMemberHistory",
+                    "description": "Search for family member history resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchFlag",
+                    "description": "Search for flag resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchGoal",
+                    "description": "Search for goal resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchGroup",
+                    "description": "Search for group resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchImagingStudy",
+                    "description": "Search for imaging study resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchImmunization",
+                    "description": "Search for immunization resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchImmunizationRecommendation",
+                    "description": "Search for immunization recommendation resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchList",
+                    "description": "Search for list resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchLocation",
+                    "description": "Search for location resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMeasure",
+                    "description": "Search for measure resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMeasureReport",
+                    "description": "Search for measure report resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMedia",
+                    "description": "Search for media resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMedication",
+                    "description": "Search for medication resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMedicationAdministration",
+                    "description": "Search for medication administration resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMedicationDispense",
+                    "description": "Search for medication dispense resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchMedicationRequest",
+                    "description": "Search for medication request resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchNutritionOrder",
+                    "description": "Search for nutrition order resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchObservation",
+                    "description": "Search for observation resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchOrganization",
+                    "description": "Search for organization resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchPatient",
+                    "description": "Search for patient resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchPractitioner",
+                    "description": "Search for practitioner resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchPractitionerRole",
+                    "description": "Search for practitioner role resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchProcedure",
+                    "description": "Search for procedure resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchQuestionnaire",
+                    "description": "Search for questionnaire resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchQuestionnaireResponse",
+                    "description": "Search for questionnaire response resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchRelatedPerson",
+                    "description": "Search for related person resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchRequestGroup",
+                    "description": "Search for request group resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchRequestStudy",
+                    "description": "Search for research study resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchResearchSubject",
+                    "description": "Search for research subject resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchServiceRequest",
+                    "description": "Search for service request resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchSpecimen",
+                    "description": "Search for specimen resources in the Epic system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "searchSubstance",
+                    "description": "Search for substance resources in the Epic system.",
+                    "isHidden": false
+                }, 
+                {
+                    "name": "searchTask",
+                    "description": "Search for task resources in the Epic system.",
+                    "isHidden": false
+                }, 
+                {
+                    "name": "update",
+                    "description": "Update resources in the Epic system.",
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/epic-connector-1.0.0.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-epic/releases/download/2.0.0/epic-connector-2.0.0.zip",
             "description": "WSO2 connector for Epic FHIR API.",
-            "icon": "epic.gif",
-            "icon_url": "https://mi-connectors.wso2.com/icons/epic.gif"
+            "icon": "icon-large.png",
+            "icon_url": "https://raw.githubusercontent.com/wso2-extensions/esb-connector-epic/master/src/main/resources/icon/icon-large.png"
         },
         {
             "name": "ethereum",
@@ -7435,6 +7635,72 @@
             "description": "Facilitates basic CRUD operations and searches on FHIR resources, bundling, error handling and ensuring standardized interactions with FHIR-compliant servers.",
             "icon": "icon-large.png",
             "icon_url": "https://raw.githubusercontent.com/wso2-extensions/mediation-fhirbase-module/main/src/main/resources/icon/icon-large.png"
+        },
+        {
+            "name": "fhirrepository",
+            "version": "1.0.0",
+            "rank": 193,
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "Init configuration for FHIR repository connector.",
+                    "isHidden": false
+                },
+                {
+                    "name": "batch",
+                    "description": "Create a new FHIR bundle.",
+                    "isHidden": false
+                },
+                {
+                    "name": "connect",
+                    "description": "Proxies a FHIR repository so that any type of API requests are routed intelligently.",
+                    "isHidden": false
+                },
+                {
+                    "name": "create",
+                    "description": "Create a new resource with a server-assigned ID.",
+                    "isHidden": false
+                },
+                {
+                    "name": "delete",
+                    "description": "Delete a resource.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getCapabilityStatement",
+                    "description": "Get a capability statement for the system.",
+                    "isHidden": false
+                },
+                {
+                    "name": "patch",
+                    "description": "Update an existing resource by posting a set of changes to it.",
+                    "isHidden": false
+                },
+                {
+                    "name": "readById",
+                    "description": "Retrieve a resource using its ID.",
+                    "isHidden": false
+                },
+                {
+                    "name": "search",
+                    "description": "Search resources by providing query parameters.",
+                    "isHidden": false
+                },
+                {
+                    "name": "update",
+                    "description": "Update an existing resource by its ID.",
+                    "isHidden": false
+                },
+                {
+                    "name": "vread",
+                    "description": "Read the state of a specific version of the resource.",
+                    "isHidden": false
+                }
+            ],
+            "download_url": "https://github.com/wso2-extensions/esb-connector-fhirrepository/releases/download/v1.0.0/fhirrepository-connector-1.0.0.zip",
+            "description": "Allows integration with FHIR repositories/servers, supporting the retrieval for supported interactions and push of healthcare data within FHIR-compliant systems.",
+            "icon": "icon-large.png",
+            "icon_url": "https://raw.githubusercontent.com/wso2-extensions/esb-connector-fhirrepository/main/src/main/resources/icon/icon-large.png"
         },
         {
             "name": "file",

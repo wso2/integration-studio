@@ -7467,7 +7467,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/4.0.0/file-connector-4.0.29.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-file/releases/download/v4.0.31/file-connector-4.0.31.zip",
             "description": "WSO2 file connector library",
             "icon": "file.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/file.gif"

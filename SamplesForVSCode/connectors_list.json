@@ -18245,7 +18245,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/snowflake-connector-1.0.0.zip",
+            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/snowflake-connector-1.0.1.zip",
             "description": "WSO2 snowflake connector library",
             "icon": "snowflake.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/snowflake.png"

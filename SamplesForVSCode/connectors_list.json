@@ -5205,6 +5205,153 @@
             "description": "WSO2 Utility Connector",
             "icon": "utilitymodule.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/utilitymodule.png"
+        },
+        {
+            "name": "googleads",
+            "version": "1.0.0",
+            "rank": 50,
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "Config operation",
+                    "isHidden": true
+                },
+                {
+                    "name": "adGroupAdsMutate",
+                    "description": "Creates, updates, or removes ads. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "adGroupsMutate",
+                    "description": "Creates, updates, or removes ad groups. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "adsMutate",
+                    "description": "Updates ads. Operation statuses are returned. Updating ads is not supported for TextAd, ExpandedDynamicSearchAd, GmailAd and ImageAd.",
+                    "isHidden": false
+                },
+                {
+                    "name": "campaignBudgets",
+                    "description": "Creates, updates, or removes campaign budgets. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "campaignsMutate",
+                    "description": "Creates, updates, or removes campaigns. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createCustomerClient",
+                    "description": "Creates a new client under manager. The new client customer is returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "search",
+                    "description": "Returns all rows that match the search query.",
+                    "isHidden": false
+                },
+                {
+                    "name": "customersMutate",
+                    "description": "Updates a customer. Operation statuses are returned.",
+                    "isHidden": false
+                }
+            ],
+            "download_url": "https://github.com/wso2-extensions/esb-connector-googleads/releases/download/v1.0.0/googleAds-connector-1.0.0.zip",
+            "description": "WSO2 Google Ads Connector",
+            "icon": "googleads.png",
+            "icon_url": "https://mi-connectors.wso2.com/icons/googleads.png"
+        },
+        {
+            "name": "facebookads",
+            "version": "1.0.0",
+            "rank": 51,
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "Config operation",
+                    "isHidden": true
+                },
+                {
+                    "name": "createAd",
+                    "description": "Create an ad.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createAdSet",
+                    "description": "Creates an ad set.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createCampaign",
+                    "description": "Create a campaign.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteAd",
+                    "description": "Deletes an ad.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteAdSet",
+                    "description": "Deletes an ad set.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteCampaign",
+                    "description": "Deletes a campaign.",
+                    "isHidden": false
+                },
+                {
+                    "name": "dissociateCampaign",
+                    "description": "Dissociate a campaign from an AdAccount.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getAd",
+                    "description": "Returns data of an ad.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getAdSet",
+                    "description": "Return data related to an ad set.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getAdSets",
+                    "description": "Returns all ad sets from one ad account.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getAds",
+                    "description": "Returns ads under this ad account.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getCampaigns",
+                    "description": "Returns campaigns under this ad account.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateAd",
+                    "description": "Updates an ad.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateAdSet",
+                    "description": "Updates an ad set.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateCampaign",
+                    "description": "Updates a campaign.",
+                    "isHidden": false
+                }
+            ],
+            "download_url": "https://github.com/wso2-extensions/esb-connector-facebookads/releases/download/v1.0.0/facebookAds-connector-1.0.0.zip",
+            "description": "WSO2 Facebook Ads Connector",
+            "icon": "facebookads.png",
+            "icon_url": "https://mi-connectors.wso2.com/icons/facebookads.png"
         }
     ],
     "inbound-connector-data": [

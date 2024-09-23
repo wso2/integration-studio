@@ -3336,7 +3336,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/3.0.0/redis-connector-3.1.0.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-redis/releases/download/v3.1.2/redis-connector-3.1.2.zip",
             "description": "wso2 Redis connector library",
             "icon": "redis.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/redis.gif"

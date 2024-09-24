@@ -2912,7 +2912,7 @@
         },
         {
             "name": "redis",
-            "version": "3.1.2",
+            "version": "3.1.3",
             "rank": 5,
             "operations": [
                 {
@@ -3336,7 +3336,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://github.com/wso2-extensions/esb-connector-redis/releases/download/v3.1.2/redis-connector-3.1.2.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-redis/releases/download/v3.1.3/redis-connector-3.1.3.zip",
             "description": "wso2 Redis connector library",
             "icon": "redis.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/redis.gif"

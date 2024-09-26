@@ -5505,6 +5505,26 @@
             "description": "WSO2 Listner Connector for CDC",
             "icon": "cdc-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/cdc-inbound.gif"
+        },
+        {
+            "name": "Kafka",
+            "id": "org.wso2.carbon.inbound.kafka.KafkaMessageConsumer",
+            "version": "1.2.3",
+            "rank": 15,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-kafka/releases/download/v1.2.3/org.apache.synapse.kafka.poll-1.2.3.zip",
+            "description": "WSO2 Listner Connector for Kafka",
+            "icon": "kafka.png",
+            "icon_url": "https://mi-connectors.wso2.com/icons/kafka.png"
+        },
+        {
+            "name": "Salesforce",
+            "id": "org.wso2.carbon.inbound.kafka.KafkaMessageConsumer",
+            "version": "2.0.6",
+            "rank": 16,
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-salesforce/releases/download/v2.0.6/org.apache.synapse.salesforce.poll.class-2.0.6.zip",
+            "description": "WSO2 Listner Connector for Salesforce",
+            "icon": "salesforce.png",
+            "icon_url": "https://mi-connectors.wso2.com/icons/salesforce.png"
         }
     ]
 }

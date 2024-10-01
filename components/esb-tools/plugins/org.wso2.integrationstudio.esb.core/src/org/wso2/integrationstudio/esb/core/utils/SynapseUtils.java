@@ -29,6 +29,7 @@ import org.apache.axiom.om.OMException;
 import org.apache.axiom.om.impl.builder.StAXOMBuilder;
 import org.apache.maven.model.Model;
 import org.apache.maven.model.Plugin;
+import org.apache.maven.model.PluginExecution;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.xml.Xpp3Dom;
 import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
@@ -168,6 +169,15 @@ public class SynapseUtils {
 
             Model model = mavenProject.getModel();
             model.setParent(parent);
+            
+            // skip unit test plugin 
+            Plugin unitTestPlugin = MavenUtils.createPluginEntry(mavenProject, "org.wso2.maven",
+                    "synapse-unit-test-maven-plugin", "5.2.42", false);
+            PluginExecution pluginExecution = new PluginExecution();
+            pluginExecution.setPhase("null");
+            pluginExecution.setId("synapse-unit-test");
+            unitTestPlugin.addExecution(pluginExecution);
+            
             MavenUtils.saveMavenProject(mavenProject, mavenProjectPomLocation);
 
             mavenParentProject.getModules().add(SynapseConstants.BUILD_ARTIFACTS_FOLDER);

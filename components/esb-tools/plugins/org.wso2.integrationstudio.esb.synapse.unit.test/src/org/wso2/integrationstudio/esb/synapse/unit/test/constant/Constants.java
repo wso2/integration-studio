@@ -101,6 +101,11 @@ public class Constants {
     public static final String REGISTRY_FILE = "file";
     public static final String REGISTRY_FILE_PATH = "path";
     public static final String REGISTRY_FILE_MEDIA_TYPE = "mediaType";
+    public static final String REGISTRY_PROPERTIES = "properties";
+    public static final String REGISTRY_PROPERTY = "property";
+    public static final String REGISTRY_PROPERTY_KEY = "key";
+    public static final String REGISTRY_PROPERTY_VALUE = "value";
+    public static final String PROPPERTIES_FILE_SUFFIX = ".properties";
 
     public static final String PATH_PREFIX = "/";
     public static final String SPACE_STRING = " ";

@@ -18,7 +18,10 @@
 package org.wso2.integrationstudio.esb.synapse.unit.test.component;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -777,6 +780,7 @@ public class DependencyTree {
                 QName registryItemFile = new QName("", Constants.REGISTRY_FILE, "");
                 QName registryItemPath = new QName("", Constants.REGISTRY_FILE_PATH, "");
                 QName registryItemMediaType = new QName("", Constants.REGISTRY_FILE_MEDIA_TYPE, "");
+                QName registryProperties = new QName("", Constants.REGISTRY_PROPERTIES, "");
 
                 OMElement registryItemNode = artifact.getFirstChildWithName(registryItem);
                 if (registryItemNode != null) {
@@ -797,7 +801,7 @@ public class DependencyTree {
                     OMElement registryItemFileTypeNode = registryItemNode.getFirstChildWithName(registryItemMediaType);
                     String fileType = registryItemFileTypeNode.getText();
                     resource.setMediaType(fileType);
-
+                    
                     // add MMM parent to the registry resource
                     String grandParentPath = "";
                     try {
@@ -813,6 +817,44 @@ public class DependencyTree {
                     }
                     String absolutePath = grandParentPath + Constants.PATH_PREFIX + registry.getProject().getName() + Constants.PATH_PREFIX + originalFileName;
                     resource.setAbsolutePath(absolutePath);
+                    
+                    OMElement regProperties = registryItemNode.getFirstChildWithName(registryProperties);
+                    if (regProperties != null) {
+                        // If registry resource has properties, create a new file called filename.properties in the same
+                        // location
+                        String artifactPath = file.getAbsolutePath();
+                        String propFileName = fileName + Constants.PROPPERTIES_FILE_SUFFIX;
+                        java.nio.file.Path propertiesFilePath = Paths.get(
+                                artifactPath.substring(0,
+                                        artifactPath.length() - Constants.REGISTRY_RESOURCE_FILE.length()),
+                                propFileName);
+                        if (Files.notExists(propertiesFilePath)) {
+                            Files.createFile(propertiesFilePath);
+                        }
+                        StringBuilder str = new StringBuilder();
+                        Iterator<?> propertyIterator = regProperties.getChildElements();
+                        while (propertyIterator.hasNext()) {
+                            OMElement property = (OMElement) propertyIterator.next();
+                            String key = property.getAttributeValue(new QName(Constants.REGISTRY_PROPERTY_KEY));
+                            String value = property.getAttributeValue(new QName(Constants.REGISTRY_PROPERTY_VALUE));
+                            str.append(key).append("=").append(value).append("\n");
+                        }
+                        if (str.length() > 0) {
+                            try (FileWriter writer = new FileWriter(propertiesFilePath.toString(), false)) {
+                                writer.write(str.toString());
+                            } catch (IOException e) {
+                                log.error("Error occurred while writing the proeprties file : " + propertiesFilePath,
+                                        e);
+                            }
+                        }
+                        // add dependency
+                        RegistryResource propResource = new RegistryResource();
+                        propResource.setFileName(propFileName);
+                        propResource.setMediaType(fileType);
+                        propResource.setFilePath(filePath);
+                        propResource.setAbsolutePath(absolutePath + Constants.PROPPERTIES_FILE_SUFFIX);
+                        registryElements.put(propFileName, propResource);
+                    }
                 }
 
                 registryElements.put(resource.getFileName(), resource);

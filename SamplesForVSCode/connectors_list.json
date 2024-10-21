@@ -5208,7 +5208,7 @@
         },
         {
             "name": "googleads",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "rank": 50,
             "operations": [
                 {
@@ -5255,16 +5255,41 @@
                     "name": "customersMutate",
                     "description": "Updates a customer. Operation statuses are returned.",
                     "isHidden": false
+                },
+                {
+                    "name": "audiencesMutate",
+                    "description": "Creates audiences. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "customAudiencesMutate",
+                    "description": "Creates or updates custom audiences. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "campaignCriteriaMutate",
+                    "description": "Creates, updates, or removes criteria. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "userListsMutate",
+                    "description": "Creates or updates user lists. Operation statuses are returned.",
+                    "isHidden": false
+                },
+                {
+                    "name": "uploadUserData",
+                    "description": "Uploads the given user data.",
+                    "isHidden": false
                 }
             ],
-            "download_url": "https://github.com/wso2-extensions/esb-connector-googleads/releases/download/v1.0.1/googleAds-connector-1.0.1.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-googleads/releases/download/v1.0.2/googleAds-connector-1.0.2.zip",
             "description": "WSO2 Google Ads Connector",
             "icon": "googleads.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/googleads.png"
         },
         {
             "name": "facebookads",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "rank": 51,
             "operations": [
                 {
@@ -5346,9 +5371,34 @@
                     "name": "updateCampaign",
                     "description": "Updates a campaign.",
                     "isHidden": false
+                },
+                {
+                    "name": "createAdCreative",
+                    "description": "Creates an ad creative.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createCustomAudience",
+                    "description": "Creates a custom audience.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateCustomAudience",
+                    "description": "Updates a custom audience.",
+                    "isHidden": false
+                },
+                {
+                    "name": "addUsersToAudience",
+                    "description": "Add users to your custom audience.",
+                    "isHidden": false
+                },
+                {
+                    "name": "removeUsersFromAudience",
+                    "description": "Remove users from your custom audience.",
+                    "isHidden": false
                 }
             ],
-            "download_url": "https://github.com/wso2-extensions/esb-connector-facebookads/releases/download/v1.0.0/facebookAds-connector-1.0.0.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-facebookads/releases/download/v1.0.2/facebookAds-connector-1.0.2.zip",
             "description": "WSO2 Facebook Ads Connector",
             "icon": "facebookads.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/facebookads.png"

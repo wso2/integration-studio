@@ -465,7 +465,7 @@
         },
         {
             "name": "amazonsqs",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "rank": 22,
             "operations": [
                 {
@@ -559,7 +559,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/2.0.0/amazonsqs-connector-2.0.0.zip",
+            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/2.0.1/amazonsqs-connector-2.0.1.zip",
             "description": "amazonsqs connector libraries",
             "icon": "amazonsimplequeueservice.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/amazonsimplequeueservice.png"

@@ -5207,7 +5207,7 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/utilitymodule.png"
         },
         {
-            "name": "googleads",
+            "name": "googleAds",
             "version": "1.0.2",
             "rank": 50,
             "operations": [
@@ -5282,13 +5282,13 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://github.com/wso2-extensions/esb-connector-googleads/releases/download/v1.0.2/googleAds-connector-1.0.2.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-/releases/download/v1.0.2/-connector-1.0.2.zip",
             "description": "WSO2 Google Ads Connector",
-            "icon": "googleads.png",
-            "icon_url": "https://mi-connectors.wso2.com/icons/googleads.png"
+            "icon": ".png",
+            "icon_url": "https://mi-connectors.wso2.com/icons/.png"
         },
         {
-            "name": "facebookads",
+            "name": "facebookAds",
             "version": "1.0.2",
             "rank": 51,
             "operations": [

@@ -5207,7 +5207,7 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/utilitymodule.png"
         },
         {
-            "name": "googleads",
+            "name": "googleAds",
             "version": "1.0.2",
             "rank": 50,
             "operations": [
@@ -5288,7 +5288,7 @@
             "icon_url": "https://mi-connectors.wso2.com/icons/googleads.png"
         },
         {
-            "name": "facebookads",
+            "name": "facebookAds",
             "version": "1.0.2",
             "rank": 51,
             "operations": [

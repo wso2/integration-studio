@@ -5516,8 +5516,8 @@
             ],
             "download_url": "https://github.com/wso2-extensions/esb-connector-sharepoint/releases/download/v1.1.0/sharepoint-connector-1.1.0.zip",
             "description": "WSO2 SharePoint Connector",
-            "icon": "sharepoint.png",
-            "icon_url": "https://mi-connectors.wso2.com/icons/sharepoint.png"
+            "icon": "sharepoint.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/sharepoint.gif"
         }
     ],
     "inbound-connector-data": [

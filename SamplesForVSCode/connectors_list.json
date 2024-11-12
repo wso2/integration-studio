@@ -5402,6 +5402,122 @@
             "description": "WSO2 Facebook Ads Connector",
             "icon": "facebookads.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/facebookads.png"
+        },
+        {
+            "name": "sharepoint",
+            "version": "1.1.0",
+            "rank": 52,
+            "operations": [
+                {
+                    "name": "init",
+                    "description": "Config operation",
+                    "isHidden": true
+                },
+                {
+                    "name": "createFolder",
+                    "description": "Create a new folder within the specified parent folder.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createGroup",
+                    "description": "Creates a new Microsoft 365 Group, which provisions a connected SharePoint site.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createList",
+                    "description": "Creates a new list in the specified site.",
+                    "isHidden": false
+                },
+                {
+                    "name": "createListItem",
+                    "description": "Creates a new item in the specified list.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteDriveItem",
+                    "description": "Deletes the specified file or folder.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteList",
+                    "description": "Deletes the specified list.",
+                    "isHidden": false
+                },
+                {
+                    "name": "deleteListItem",
+                    "description": "Deletes the specified list item.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getDriveItemById",
+                    "description": "Retrieves metadata about the specified file or folder.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getFolderChildren",
+                    "description": "Retrieves all items within the specified folder.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getGroupSite",
+                    "description": "Retrieves the root SharePoint site associated with the specified Microsoft 365 Group.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getListById",
+                    "description": "Retrieves a list by its ID or Title/Display name.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getListItemById",
+                    "description": "Retrieves a list item by its ID.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getListItems",
+                    "description": "Retrieves all items in the specified list.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getLists",
+                    "description": "Retrieves all lists in the specified site.",
+                    "isHidden": false
+                },
+                {
+                    "name": "getRootChildren",
+                    "description": "Retrieves all items in the root directory of the drive.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateFileContent",
+                    "description": "Updates the content of the specified file.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateFolder",
+                    "description": "Updates the properties of the specified folder.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateList",
+                    "description": "Updates properties of the specified list.",
+                    "isHidden": false
+                },
+                {
+                    "name": "updateListItemFields",
+                    "description": "Updates the fields of the specified list item.",
+                    "isHidden": false
+                },
+                {
+                    "name": "uploadFile",
+                    "description": "Uploads a new file to the specified folder.",
+                    "isHidden": false
+                }
+            ],
+            "download_url": "https://github.com/wso2-extensions/esb-connector-sharepoint/releases/download/v1.1.0/sharepoint-connector-1.1.0.zip",
+            "description": "WSO2 SharePoint Connector",
+            "icon": "sharepoint.gif",
+            "icon_url": "https://mi-connectors.wso2.com/icons/sharepoint.gif"
         }
     ],
     "inbound-connector-data": [

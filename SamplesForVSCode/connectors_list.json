@@ -5675,9 +5675,9 @@
         {
             "name": "Kafka",
             "id": "org.wso2.carbon.inbound.kafka.KafkaMessageConsumer",
-            "version": "1.2.3",
+            "version": "1.2.4",
             "rank": 15,
-            "download_url": "https://github.com/wso2-extensions/esb-inbound-kafka/releases/download/v1.2.3/org.apache.synapse.kafka.poll-1.2.3.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-kafka/releases/download/v1.2.4/org.apache.synapse.kafka.poll-1.2.4.zip",
             "description": "WSO2 Listner Connector for Kafka",
             "icon": "kafka.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/kafka.png"

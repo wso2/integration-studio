@@ -2851,7 +2851,7 @@
         },
         {
             "name": "mongodb",
-            "version": "1.0.2",
+            "version": "2.0.0",
             "rank": 4,
             "operations": [
                 {
@@ -2905,7 +2905,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/mongodb-connector-1.0.2.zip",
+            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/2.0.0/mongodb-connector-2.0.0.zip",
             "description": "WSO2 MongoDB connector library",
             "icon": "mongodb.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/mongodb.png"

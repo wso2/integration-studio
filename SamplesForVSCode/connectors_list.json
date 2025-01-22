@@ -5658,7 +5658,7 @@
             "version": "1.1.2",
             "rank": 11,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-amazonsqs/releases/download/v1.1.2/org.apache.synapse.amazonsqs.poll.class-1.1.2.zip",
-            "description": "WSO2 Listner Connector for AmazonSQS",
+            "description": "WSO2 Event Listener for AmazonSQS",
             "icon": "amazonsqs-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/amazonsqs-inbound.gif"
         },
@@ -5668,7 +5668,7 @@
             "version": "1.1.1",
             "rank": 12,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-iso8583/releases/download/org.wso2.carbon.inbound.iso8583-1.1.1/org.wso2.carbon.inbound.iso8583-1.1.1.zip",
-            "description": "WSO2 Listner Connector for ISO8583",
+            "description": "WSO2 Event Listener for ISO8583",
             "icon": "ISO8583-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/ISO8583-inbound.gif"
         },
@@ -5678,7 +5678,7 @@
             "version": "1.0.1",
             "rank": 13,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-smpp/releases/download/org.apache.synapse.smpp.listen.class-1.0.1/org.apache.synapse.smpp.listen.class-1.0.1.zip",
-            "description": "WSO2 Listner Connector for SMPP",
+            "description": "WSO2 Event Listener for SMPP",
             "icon": "smpp-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/smpp-inbound.gif"
         },
@@ -5688,7 +5688,7 @@
             "version": "1.1.0",
             "rank": 14,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-cdc/releases/download/v1.1.0/org.apache.synapse.cdc.poll-1.1.0.zip",
-            "description": "WSO2 Listner Connector for CDC",
+            "description": "WSO2 Event Listener for CDC",
             "icon": "cdc-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/cdc-inbound.gif"
         },
@@ -5698,7 +5698,7 @@
             "version": "1.2.4",
             "rank": 15,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-kafka/releases/download/v1.2.4/org.apache.synapse.kafka.poll-1.2.4.zip",
-            "description": "WSO2 Listner Connector for Kafka",
+            "description": "WSO2 Event Listener for Kafka",
             "icon": "kafka.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/kafka.png"
         },
@@ -5708,7 +5708,7 @@
             "version": "2.0.6",
             "rank": 16,
             "download_url": "https://github.com/wso2-extensions/esb-inbound-salesforce/releases/download/v2.0.6/org.apache.synapse.salesforce.poll.class-2.0.6.zip",
-            "description": "WSO2 Listner Connector for Salesforce",
+            "description": "WSO2 Event Listener for Salesforce",
             "icon": "salesforce.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/salesforce.png"
         }

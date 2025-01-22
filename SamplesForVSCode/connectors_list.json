@@ -5548,7 +5548,7 @@
             "version": "1.0.0",
             "rank": 1,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/http.zip",
-            "description": "Inbuilt HTTP Inbound Endpoint",
+            "description": "Inbuilt HTTP Event Listener",
             "icon": "http-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/http-inbound.gif"
         },
@@ -5559,7 +5559,7 @@
             "version": "1.0.0",
             "rank": 2,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/https.zip",
-            "description": "Inbuilt HTTPS Inbound Endpoint",
+            "description": "Inbuilt HTTPS Event Listener",
             "icon": "https-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/https-inbound.gif"
         },
@@ -5570,7 +5570,7 @@
             "version": "1.0.0",
             "rank": 3,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/jms.zip",
-            "description": "Inbuilt JMS Inbound Endpoint",
+            "description": "Inbuilt JMS Event Listener",
             "icon": "jms-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/jms-inbound.gif"
         },
@@ -5581,7 +5581,7 @@
             "version": "1.0.0",
             "rank": 4,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/file.zip",
-            "description": "Inbuilt File Inbound Endpoint",
+            "description": "Inbuilt File Event Listener",
             "icon": "file-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/file-inbound.gif"
         },
@@ -5592,7 +5592,7 @@
             "version": "1.0.0",
             "rank": 5,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/rabbitmq.zip",
-            "description": "Inbuilt RabbitMQ Inbound Endpoint",
+            "description": "Inbuilt RabbitMQ Event Listener",
             "icon": "rabbitmq-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/rabbitmq-inbound.gif"
         },
@@ -5603,7 +5603,7 @@
             "version": "1.0.0",
             "rank": 6,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/ws.zip",
-            "description": "Inbuilt Websocket Inbound Endpoint",
+            "description": "Inbuilt Websocket Event Listener",
             "icon": "ws-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/ws-inbound.gif"
         },
@@ -5614,7 +5614,7 @@
             "version": "1.0.0",
             "rank": 7,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/wss.zip",
-            "description": "Inbuilt Secure Websocket Inbound Endpoint",
+            "description": "Inbuilt Secure Websocket Event Listener",
             "icon": "wss-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/wss-inbound.gif"
         },
@@ -5625,7 +5625,7 @@
             "version": "1.0.0",
             "rank": 8,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/mqtt.zip",
-            "description": "Inbuilt MQTT Inbound Endpoint",
+            "description": "Inbuilt MQTT Event Listener",
             "icon": "mqtt-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/mqtt-inbound.gif"
         },
@@ -5636,7 +5636,7 @@
             "version": "1.0.0",
             "rank": 9,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/hl7.zip",
-            "description": "Inbuilt HL7 Inbound Endpoint",
+            "description": "Inbuilt HL7 Event Listener",
             "icon": "hl7-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/hl7-inbound.gif"
         },
@@ -5647,7 +5647,7 @@
             "version": "1.0.0",
             "rank": 10,
             "download_url": "https://github.com/wso2/integration-studio/raw/main/SamplesForVSCode/InbuiltInboundEndpoints/wso2-mb.zip",
-            "description": "Inbuilt WSO2-MB Inbound Endpoint",
+            "description": "Inbuilt WSO2-MB Event Listener",
             "icon": "wso2mb-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/wso2mb-inbound.gif"
         },

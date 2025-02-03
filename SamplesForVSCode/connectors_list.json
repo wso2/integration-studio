@@ -458,7 +458,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/2.0.0/amazons3-connector-2.0.6.zip",
+            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/2.0.0/amazons3-connector-2.0.7.zip",
             "description": "amazon S3 connector libraries",
             "icon": "amazons3.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/amazons3.png"

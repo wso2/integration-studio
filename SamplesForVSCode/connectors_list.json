@@ -5685,9 +5685,9 @@
         {
             "name": "CDC",
             "id": "org.wso2.carbon.inbound.cdc.CDCPollingConsumer",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "rank": 14,
-            "download_url": "https://github.com/wso2-extensions/esb-inbound-cdc/releases/download/v1.1.0/org.apache.synapse.cdc.poll-1.1.0.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-inbound-cdc/releases/download/v1.2.0/org.apache.synapse.cdc.poll-1.2.0.zip",
             "description": "WSO2 Event Listener for CDC",
             "icon": "cdc-inbound.gif",
             "icon_url": "https://mi-connectors.wso2.com/icons/cdc-inbound.gif"

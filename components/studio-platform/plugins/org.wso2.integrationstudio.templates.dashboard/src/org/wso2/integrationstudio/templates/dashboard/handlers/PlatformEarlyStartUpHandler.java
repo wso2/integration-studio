@@ -31,6 +31,8 @@ import org.eclipse.m2e.core.internal.MavenPluginActivator;
 import org.eclipse.m2e.core.internal.launch.AbstractMavenRuntime;
 import org.eclipse.m2e.core.internal.launch.MavenExternalRuntime;
 import org.eclipse.m2e.core.internal.launch.MavenRuntimeManagerImpl;
+import org.eclipse.swt.program.Program;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IPersistableElement;
 import org.eclipse.ui.IStartup;
@@ -85,6 +87,7 @@ public class PlatformEarlyStartUpHandler implements IStartup {
         setFileAssociations();
         setDefaultMavenInstallation();
         setDefaultImportAndExportOptions();
+        showDeprecationMessage();
     }
     
     /**
@@ -297,5 +300,18 @@ public class PlatformEarlyStartUpHandler implements IStartup {
             return "Getting Started";
         }
     }
+    
+	public static void showDeprecationMessage() {
+		Display.getDefault().asyncExec(() -> {
+			boolean openLink = MessageDialog.openQuestion(Display.getDefault().getActiveShell(),
+					"WSO2 Integration Studio Deprecated",
+					"WSO2 Integration Studio is now deprecated. Please migrate to VS Code for the latest tools and support.\n\n"
+							+ "Would you like to visit the VS Code Marketplace?");
 
+			// Open the URL if the user clicks "Yes"
+			if (openLink) {
+				Program.launch("https://marketplace.visualstudio.com/items?itemName=WSO2.micro-integrator");
+			}
+		});
+	}
 }

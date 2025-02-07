@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Integration Studio UI
 Bundle-SymbolicName: org.wso2.integrationstudio.ui
-Bundle-Version: 8.3.0.qualifier
+Bundle-Version: 8.4.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.ui.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,

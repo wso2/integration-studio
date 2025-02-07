@@ -48,7 +48,7 @@ public class RunUpdaterRootJob extends Job {
 
     protected static IIntegrationStudioLog log = Logger.getLog(UpdaterPlugin.PLUGIN_ID);
 
-    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/8.3.0/release-notes/";
+    private static final String RELEASE_NOTE_URL = "https://product-dist.wso2.com/p2/integration-studio/8.4.0/release-notes/";
     private static final String TOOLING_PATH_MAC = "/Applications/IntegrationStudio.app/Contents/Eclipse";
     private static final String EMPTY_STRING = "";
 

@@ -24,8 +24,8 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 
 	public static final String KERNEL_SAMPLES_GIT = "https://github.com/wso2/tooling-templates.git";
 	public static final String PREFERENCES_PLUGIN_ID = "org.wso2.integrationstudio.platform.ui";
-	public static final String currentDevSVersion = "4.3.0";
-	public static final String nextDevSVersion = "4.4.0";
+	public static final String currentDevSVersion = "4.4.0";
+	public static final String nextDevSVersion = "4.5.0";
 	public static final String DEFAULT_RELEASE_SITE = "https://product-dist.wso2.com/p2/developer-studio-kernel/"
 			+ currentDevSVersion + "/releases/";
 	public static final String DEFAULT_UPDATE_SITE = "https://product-dist.wso2.com/p2/developer-studio-kernel/"

@@ -25,7 +25,8 @@ import org.wso2.integrationstudio.carbonserver42.register.product.servers.Dynami
 import org.wso2.integrationstudio.carbonserver44.register.product.servers.DynamicServer44ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44ei.register.product.servers.DynamicServer44eiExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei.register.product.servers.DynamicServer44MicroeiExtensionGenerator;
-import org.wso2.integrationstudio.carbonserver44microei43.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei44.register.product.servers.MicroIntegratorInstance;
+import org.wso2.integrationstudio.carbonserver44microei44.register.product.servers.DynamicServer44Microei44ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei43.register.product.servers.DynamicServer44Microei43ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei42.register.product.servers.DynamicServer44Microei42ExtensionGenerator;
 import org.wso2.integrationstudio.carbonserver44microei41.register.product.servers.DynamicServer44Microei41ExtensionGenerator;
@@ -79,6 +80,10 @@ public class PlatformEarlyStartUpHandler implements IStartup {
 		DynamicServer44Microei43ExtensionGenerator dynamicMicroEI43ServerExtensionGenerator = new DynamicServer44Microei43ExtensionGenerator();
 		dynamicMicroEI43ServerExtensionGenerator.readProductServerExtensions(registeredServers,
 				serverExtensionsRegistryUtils);		
+
+		DynamicServer44Microei44ExtensionGenerator dynamicMicroEI44ServerExtensionGenerator = new DynamicServer44Microei44ExtensionGenerator();
+		dynamicMicroEI44ServerExtensionGenerator.readProductServerExtensions(registeredServers,
+				serverExtensionsRegistryUtils);			
 
         DynamicServer44ExtensionGenerator dynamicServerExtensionGenerator = new DynamicServer44ExtensionGenerator();
         dynamicServerExtensionGenerator.readProductServerExtensions(registeredServers, serverExtensionsRegistryUtils);

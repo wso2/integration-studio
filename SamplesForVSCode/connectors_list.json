@@ -2723,7 +2723,7 @@
         },
         {
             "name": "kafkaTransport",
-            "version": "3.3.4",
+            "version": "3.3.5",
             "rank": 2,
             "operations": [
                 {
@@ -2737,7 +2737,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://github.com/wso2-extensions/esb-connector-kafka/releases/download/v3.3.1/kafkaTransport-connector-3.3.1.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-kafka/releases/download/v3.3.5/kafkaTransport-connector-3.3.5.zip",
             "description": "Kafka transport connector library",
             "icon": "kafka.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/kafka.png"

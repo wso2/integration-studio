@@ -4569,7 +4569,7 @@
         },
         {
             "name": "snowflake",
-            "version": "1.0.0",
+            "version": "1.0.3",
             "rank": 162,
             "operations": [
                 {
@@ -4593,7 +4593,7 @@
                     "isHidden": false
                 }
             ],
-            "download_url": "https://product-dist.wso2.com/downloads/esb-connectors/1.0.0/snowflake-connector-1.0.1.zip",
+            "download_url": "https://github.com/wso2-extensions/esb-connector-snowflake/releases/download/v1.0.3/snowflake-connector-1.0.3.zip",
             "description": "WSO2 snowflake connector library",
             "icon": "snowflake.png",
             "icon_url": "https://mi-connectors.wso2.com/icons/snowflake.png"

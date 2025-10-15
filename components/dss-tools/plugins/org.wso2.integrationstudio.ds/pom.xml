@@ -20,7 +20,7 @@
     <parent>
         <artifactId>wso2-integrationstudio-data-service-plugins</artifactId>
         <groupId>org.wso2.integrationstudio</groupId>
-        <version>8.4.0-SNAPSHOT</version>
+        <version>8.5.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>   
     <modelVersion>4.0.0</modelVersion>

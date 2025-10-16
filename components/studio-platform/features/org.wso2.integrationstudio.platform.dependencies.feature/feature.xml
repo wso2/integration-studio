@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.wso2.integrationstudio.platform.dependencies.feature" label="Integration Studio External Dependencies" version="8.4.0.qualifier" provider-name="%providerName">
+<feature id="org.wso2.integrationstudio.platform.dependencies.feature" label="Integration Studio External Dependencies" version="8.5.0.qualifier" provider-name="%providerName">
 
       <description url="http://wso2.com">
       This feature will provide external dependencies related WSO2 Integration Studio.

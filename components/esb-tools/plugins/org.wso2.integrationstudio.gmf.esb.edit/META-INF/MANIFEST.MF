@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.wso2.integrationstudio.gmf.esb.edit;singleton:=true
 Automatic-Module-Name: org.wso2.integrationstudio.gmf.esb.edit
-Bundle-Version: 8.4.0.qualifier
+Bundle-Version: 8.5.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.wso2.integrationstudio.gmf.esb.provider.EsbEditPlugin$Implementation
 Bundle-Vendor: %providerName

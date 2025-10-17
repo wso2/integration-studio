@@ -38,7 +38,7 @@ public class PlatformUIConstants {
             + "((([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)(\\/([a-z0-9]+)((__|[._]|[-]+)([a-z0-9]+))*)*)";
     public static final String DOCKER_TAG_REGEX = "[\\w][\\w.-]{0,127}";
     public static final String DOCKER_DEFAULT_BASE_REPOSITORY = "docker.wso2.com/wso2mi";
-    public static final String DOCKER_DEFAULT_BASE_TAG = "4.4.0";
-    public static final String MI_DEPLOYMENT_TOML_TEMPLATE_VERSION = "4.4.0";
-    public static final String EMBEDDED_RUNTIME_DEFAULT_VERSION = "4.4.0";
+    public static final String DOCKER_DEFAULT_BASE_TAG = "4.5.0";
+    public static final String MI_DEPLOYMENT_TOML_TEMPLATE_VERSION = "4.5.0";
+    public static final String EMBEDDED_RUNTIME_DEFAULT_VERSION = "4.5.0";
 }

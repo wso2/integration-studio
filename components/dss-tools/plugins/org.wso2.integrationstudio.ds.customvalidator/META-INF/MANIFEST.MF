@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Dataservice Validator Class Plugin
 Bundle-SymbolicName: org.wso2.integrationstudio.ds.customvalidator;singleton:=true
-Bundle-Version: 8.4.0.qualifier
+Bundle-Version: 8.5.0.qualifier
 Bundle-Activator: org.wso2.integrationstudio.ds.customvalidator.Activator
 Bundle-Vendor: WSO2
 Require-Bundle: org.eclipse.ui,

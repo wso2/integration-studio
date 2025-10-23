@@ -29,10 +29,10 @@ echo BASE_DIR: $BASE_DIR, PRODUCT_VERSION: $PRODUCT_VERSION and SERVER_PATH_ROOT
 
 # Unzip micro integrator archive
 echo "Unzipping wso2mi-$PRODUCT_VERSION Pack."
-unzip $SERVER_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip -d $SERVER_PATH_ROOT
+unzip $SERVER_PATH_ROOT/wso2mi-$PRODUCT_VERSION-rc.zip -d $SERVER_PATH_ROOT
 
 # Cleanup
-rm $SERVER_PATH_ROOT/wso2mi-$PRODUCT_VERSION.zip
+rm $SERVER_PATH_ROOT/wso2mi-$PRODUCT_VERSION-rc.zip
 
 # Rename as "microesb" (this is the static name used in EI Tooling code)
 echo "Rename runtime distribution directory as microesb"

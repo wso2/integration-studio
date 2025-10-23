@@ -99,7 +99,7 @@
                             <goal>wget</goal>
                         </goals>
                         <configuration>
-                            <url>https://wso2.org/jenkins/job/products/job/integration-control-plane/32/artifact/distribution/target/wso2-integration-control-plane-1.2.0.zip</url>
+                            <url>https://github.com/wso2/integration-control-plane/releases/download/v1.2.0-rc/wso2-integration-control-plane-1.2.0-rc.zip</url>
                             <unpack>false</unpack>
                             <outputDirectory>${project.build.directory}/products</outputDirectory>
                         </configuration>

@@ -61,8 +61,16 @@
             true
         ],
         [
+            1,
+            1,
+            "Synapse Expressions",
+            "This sample demonstrates usage of Synapse expressions.",
+            "SynapseExpressions",
+            true
+        ],
+        [
             2,
-            2,
+            3,
             "Content Based Routing",
             "This sample demonstrates content-based message routing in an integration solution.",
             "ContentBasedRouting",
@@ -70,7 +78,7 @@
         ],
         [
             2,
-            9,
+            10,
             "Header Based Routing",
             "This sample demonstrates header-based message routing in an integration solution.",
             "HeaderBasedRouting",
@@ -78,7 +86,7 @@
         ],
         [
             2,
-            15,
+            16,
             "Message Filtering",
             "This sample demonstrates message filtering in an integration solution.",
             "MessageFiltering",
@@ -86,7 +94,7 @@
         ],
         [
             2,
-            17,
+            18,
             "Protocol Switching",
             "This sample demonstrates protocol switching in an integration solution.",
             "ProtocolSwitching",
@@ -94,7 +102,7 @@
         ],
         [
             2,
-            18,
+            19,
             "Proxying a REST Service",
             "This sample exposes a virtual service, which acts as a proxy to an existing RESTful service.",
             "ProxyingaRESTService",
@@ -102,7 +110,7 @@
         ],
         [
             2,
-            19,
+            20,
             "Proxying a SOAP Service",
             "This sample exposes a virtual service, which acts as a proxy to an existing SOAP service.",
             "ProxyingaSOAPService",
@@ -110,7 +118,7 @@
         ],
         [
             2,
-            23,
+            24,
             "Scatter Gather Integration Pattern",
             "This sample demonstrates how to implement the Scatter Gather messaging pattern.",
             "ScatterGatherIntegrationPattern",
@@ -118,7 +126,7 @@
         ],
         [
             4,
-            7,
+            8,
             "File Transfer",
             "This sample demonstrates file handling in an integration solution.",
             "FileTransfer",
@@ -126,7 +134,7 @@
         ],
         [
             4,
-            8,
+            9,
             "Guaranteed Delivery",
             "This sample demonstrates guaranteed message delivery using the Store and Forward messaging pattern.",
             "GuaranteedDelivery",
@@ -134,7 +142,7 @@
         ],
         [
             4,
-            1,
+            2,
             "JMS Integration",
             "This sample demonstrates how the WSO2 Enterprise Integrator integrates with JMS brokers.",
             "JMSIntegration",
@@ -142,7 +150,7 @@
         ],
         [
             4,
-            14,
+            15,
             "Kafka Consumer and Producer",
             "This sample demonstrates how Kafka messages are consumed and produced using WSO2 Kafka Connector.",
             "KafkaConsumerandProducer",
@@ -150,7 +158,7 @@
         ],
         [
             4,
-            20,
+            21,
             "RabbitMQ Integration",
             "This sample demonstrates how the WSO2 Enterprise Integrator integrates with RabbitMQ.",
             "RabbitMQIntegration",
@@ -158,7 +166,7 @@
         ],
         [
             3,
-            13,
+            14,
             "JSON to XML Mapping",
             "This sample demonstrates JSON to XML mapping using the Data Mapper mediator.",
             "JSONtoXMLMapping",
@@ -166,7 +174,7 @@
         ],
         [
             3,
-            22,
+            23,
             "REST to SOAP Conversion",
             "This sample exposes an existing SOAP service as a RESTful API.",
             "RESTtoSOAPConversion",
@@ -174,7 +182,7 @@
         ],
         [
             3,
-            25,
+            26,
             "XML to JSON Mapping",
             "This sample demonstrates XML to JSON mapping using the Data Mapper mediator.",
             "XMLtoJSONMapping",
@@ -182,7 +190,7 @@
         ],
         [
             3,
-            26,
+            27,
             "XML To JSON Transformation",
             "This sample demonstrates  XML to JSON message transformation capabilities.",
             "XMLToJSONTransformation",
@@ -190,7 +198,7 @@
         ],
         [
             6,
-            21,
+            22,
             "REST Data Service",
             "This sample demonstrates a data service exposed as a RESTful service.",
             "RESTDataService",
@@ -198,7 +206,7 @@
         ],
         [
             6,
-            24,
+            25,
             "Students Data Service",
             "This sample demonstrates a SOAP data service.",
             "StudentsDataService",
@@ -206,7 +214,7 @@
         ],
         [
             9,
-            10,
+            11,
             "Hello Docker",
             "This sample demonstrates how to deploy a simple Hello World service on Docker.",
             "HelloDocker",
@@ -214,7 +222,7 @@
         ],
         [
             8,
-            5,
+            6,
             "Exception Handling",
             "This sample demonstrates the exception handling capabilities of WSO2 Enterprise Integrator.",
             "ExceptionHandling",
@@ -222,23 +230,23 @@
         ],
         [
             10,
-            12,
+            13,
             "API Testing",
-            "This sample demonstrates unit testing of a REST API artifact using WSO2 Integration Studio.",
+            "An API that handles standard HTTP methods (GET, POST, PUT, DELETE) with predefined responses. Ideal for testing request handling and API interactions.",
             "APITesting",
             true
         ],
         [
             10,
-            27,
+            28,
             "Unit Test Tutorial",
-            "This sample demonstrates the Unit Testing capabilities of WSO2 Integration Studio.",
+            "This sample demonstrates the Unit Testing capabilities of WSO2 Integrator: MI.",
             "UnitTestTutorial",
             true
         ],
         [
             5,
-            4,
+            5,
             "Email Service",
             "This sample demonstrates how to send and receive emails using WSO2 Email Connector.",
             "EmailService",
@@ -246,7 +254,7 @@
         ],
         [
             5,
-            6,
+            7,
             "Fetch SalesForce Accounts",
             "This sample demonstrates how to fetch leads from the Salesforce system.",
             "FetchSalesForceAccounts",
@@ -254,7 +262,7 @@
         ],
         [
             7,
-            3,
+            4,
             "Database Polling",
             "This sample demonstrates how to periodically poll data from a database and then trigger a message flow.",
             "DatabasePolling",
@@ -262,7 +270,7 @@
         ],
         [
             7,
-            16,
+            17,
             "Periodical Scheduled Tasks",
             "This sample demonstrates how scheduled integration tasks are created and periodically triggered.",
             "PeriodicalScheduledTasks",
